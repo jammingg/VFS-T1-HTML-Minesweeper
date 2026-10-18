@@ -2,7 +2,7 @@ This is a web minesweeper game.
 It is for school assignment and pratices.
 
 repo:
-jammingg/VFS-T1-HTML-minesweeper
+https://github.com/jammingg/VFS-T1-HTML-Minesweeper
 
 Open a local server to Play
 command: 

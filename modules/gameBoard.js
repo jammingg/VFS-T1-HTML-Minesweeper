@@ -76,8 +76,8 @@ class GameBoard {
     generateMines(totalMines, board) {
         var mines = 0;
         while (mines < totalMines) {
-            let r = getRandomInt(this.rows);
-            let c = getRandomInt(this.cols);
+            let r = this.getRandomInt(this.rows);
+            let c = this.getRandomInt(this.cols);
             if (this.mines.some(mine => mine[0] === r && mine[1] === c)) {
                 continue;
             }
@@ -111,20 +111,20 @@ class GameBoard {
 
     updateShowBoard(row, col, flag) {
         // unflag - update flagMap
-        if(this.flagMap.some(f => f[0] === row && f[1] === col) && flag !== 'f'){
+        if (this.flagMap.some(f => f[0] === row && f[1] === col) && flag !== 'f') {
             this.flagMap.splice(f => f[0] === row && f[1] === col);
         }
 
         this.showBoard[row][col] = flag;
         // flag - update flagMap
-        if(flag === 'f'){
+        if (flag === 'f') {
             if (this.flagMap.some(flag => flag[0] === row && flag[1] === col)) {
                 return;
             }
             this.flagMap.push([row, col]);
         }
-        
-        
+
+
         // this.printShowBoardinConsole();
     }
 
@@ -150,7 +150,7 @@ class GameBoard {
                 const newRow = r + dr;
                 const newCol = c + dc;
                 if (newRow < 0 || newRow >= this.rows ||
-                    newCol < 0 || newCol >= this.cols || board[newRow][newCol] === 'B' ) continue;
+                    newCol < 0 || newCol >= this.cols || board[newRow][newCol] === 'B') continue;
 
                 board[newRow][newCol] = (board[newRow][newCol] ?? 0) + 1;
 
@@ -190,13 +190,13 @@ class GameBoard {
         //     board[r + 1][c + 1] = (board[r + 1][c + 1] ?? 0) + 1;
         // }
     }
-
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
 
 }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+
 
 
 

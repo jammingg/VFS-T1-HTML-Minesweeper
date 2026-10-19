@@ -45,7 +45,7 @@ class GameBoard {
 
     renderBoard(containerId) {
         this.showMinesLeft(containerId);
-        const container = document.getElementById(containerId);
+        const container = document.querySelector(`#${containerId}`);
         container.innerHTML = '';
         const table = document.createElement("table");
         table.classList.add("game-board");
@@ -98,8 +98,8 @@ class GameBoard {
     }
 
     showMinesLeft(containerId) {
-        const container = document.getElementById(containerId);
-        let numMinesTag = document.getElementById("numMines");
+        const container = document.querySelector(`#${containerId}`);
+        let numMinesTag = document.querySelector("#numMines");
         if (!numMinesTag) {
             numMinesTag = document.createElement('h2');
             numMinesTag.id = 'numMines';

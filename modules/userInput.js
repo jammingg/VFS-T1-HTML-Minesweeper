@@ -5,7 +5,7 @@ class UserInput {
     }
 
     addEventListeners(){
-        const gameContainer = document.getElementById('game-container');
+        const gameContainer = document.querySelector('#game-container');
         gameContainer.addEventListener("click", this.handleClick.bind(this));
         gameContainer.addEventListener("contextmenu", this.handleRightClick.bind(this));
     }

@@ -9,6 +9,7 @@ class GameBoard {
         this.totalMines = totalMines;
         this.board = this.createBoard(totalMines);
         this.showBoard = this.createShowBoard();
+        // console.log(this.board); // cheating
     }
 
     createBoard(totalMines) {
@@ -26,7 +27,7 @@ class GameBoard {
         }
         this.generateMines(totalMines, board);
         this.createNumbersSurround(board);
-        console.log(this.mines);
+        // console.log(this.mines); // cheating
 
         return board;
     }
@@ -110,19 +111,29 @@ class GameBoard {
     }
 
     updateShowBoard(row, col, flag) {
-        // unflag - update flagMap
-        if (this.flagMap.some(f => f[0] === row && f[1] === col) && flag !== 'f') {
-            this.flagMap.splice(f => f[0] === row && f[1] === col);
-        }
+        // console.log(`hits here  ${row}, ${col}`);
+        const index = this.flagMap.findIndex(f => f[0] === row && f[1] === col);
+        // console.log(`index  ${index}`);
 
         this.showBoard[row][col] = flag;
-        // flag - update flagMap
+        
         if (flag === 'f') {
-            if (this.flagMap.some(flag => flag[0] === row && flag[1] === col)) {
-                return;
-            }
+            // flag - update flagMap
             this.flagMap.push([row, col]);
+            // console.log(`flagging  ${row}, ${col}`);
+            // console.log(this.flagMap);
         }
+        
+        else {  
+            // unflag - update flagMap
+            if (index !== -1) {
+                this.flagMap.splice(index, 1);
+                // console.log(`unflagging  ${row}, ${col}`);
+                // console.log(this.flagMap);
+            }
+        }
+
+
 
 
         // this.printShowBoardinConsole();
